@@ -1,0 +1,1 @@
+Example for usage of Service Guard for DXP.
