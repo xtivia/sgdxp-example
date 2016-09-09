@@ -5,7 +5,7 @@ Note that while the focus here is on Liferay 7 DXP Service Guard also works just
 
 ###JAX-RS Services in Liferay 7 DXP
 
-This project extends from another GitHub [project]() that demonstrates the basics associated with creating JAX-RS based REST services in DXP. The reader is strongly encouraged to visit that project first and become familiar with the described approach for the construction of JAX-RS services in DXP using the newly added features in version 7.
+This project extends from another GitHub [project](https://github.com/xtivia/dxp-rest-example) that demonstrates the basics associated with creating JAX-RS based REST services in DXP. The reader is strongly encouraged to visit that project first and become familiar with the described approach for the construction of JAX-RS services in DXP using the newly added features in version 7.
 
 Here we will leverage the service for "people" first developed in the that project to create derived versions of the service and then demonstrate how to use Service Guard to control access to each one of those derived endpoints.
 
