@@ -27,7 +27,7 @@ To compile your code that uses Service Guard you will need to do the following (
 
 For runtime use you will need to install the Service Guard module in your local DXP environment. The JAR file is available at http://jcenter.bintray.com/com/xtivia/tools/sgdxp/1.0.0/sgdxp-1.0.0.jar. The simplest approach for installing the JAR is to  download it using the URL above and then copy it into the *deploy* directory of your DXP installation. (It can also be installed using the DXP gogo shell using the URL above).
 
-###Using Service Guard
+### Using Service Guard
 
 To use Service Guard you will need to do the following two things in your code:
 1. Extend your JAX-RS Application class from *SgDxpApplication*
