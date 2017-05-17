@@ -1,15 +1,15 @@
-##Using Service Guard for Liferay DXP
+## Using Service Guard for Liferay DXP
 This is a project that demonstrates how to use [Service Guard for Liferay DXP](https://github.com/xtivia/sgdxp). Service Guard allows us to use simple annotations to mark JAX-RS based REST services that we wish to protect using Liferay 7 DXP's Role and Permissions system. 
 
 Note that while the focus here is on Liferay 7 DXP Service Guard also works just fine using Liferay CE as well.
 
-###JAX-RS Services in Liferay 7 DXP
+### JAX-RS Services in Liferay 7 DXP
 
 This project extends from another GitHub [project](https://github.com/xtivia/dxp-rest-example) that demonstrates the basics associated with creating JAX-RS based REST services in DXP. The reader is strongly encouraged to visit that project first and become familiar with the described approach for the construction of JAX-RS services in DXP using the newly added features in version 7.
 
 Here we will leverage the service for "people" first developed in the that project to create derived versions of the service and then demonstrate how to use Service Guard to control access to each one of those derived endpoints.
 
-###Prerequisites
+### Prerequisites
 
 - Install Gradle from http://gradle.org/gradle-download. (**NOTE**: this project's build script uses features introduced in Gradle 2.12 so that is the **minimum** required version).
 
@@ -17,7 +17,7 @@ Here we will leverage the service for "people" first developed in the that proje
 
 - Configure the CXF and REST Extender system settings as described in the "DXP Configuration" section of the referenced project
 
-###Service Guard Distribution
+### Service Guard Distribution
 
 Service Guard is distributed as an OSGi module (JAR). It is available via the standard bintray/JCenter repository.
 
@@ -36,7 +36,7 @@ To use Service Guard you will need to do the following two things in your code:
 
 NOTE: All of the steps described above can be seen in the supplied source code for this project. In this project we have created multiple JAX-RS resources where each such resource extends the base *People* resource and then adds a single GET-based method to demonstrate one of the ServiceGuard annotations.
 
-###Service Guard Annotations
+### Service Guard Annotations
 
 Service Guard provides a rich set of annotations that allow you to leverage DXP role assignments and/or organization memberships for protecting access to your services. **Note that these annotations can be applied either at the class level, or at the individual method level**. If the annotation is applied at the class level, then all JAX-RS resource endpoints in the class will have the effect of the annotation applied to them without further need to annotate individual methods.
 
@@ -60,7 +60,7 @@ To address these needs Service Guard provides the **@Authorized** annotation. To
 
 Providing a class that implements *IAuthorizer* is the key to the custom authorization system for Service Guard. The Service Guard framework will invoke the *authorize()* method in this class any time an attempt is made to access a JAX-RS endpoint that has been protected with the *@Authorized* annotation described above. The *authorize()* method accepts a single *IContext* parameter provided by the framework which is a an object that provides a variety of useful fields and objects upon which a custom authorization decision can be made (see below). The authorize() method should return true to indicate that authorization is successful, and false otherwise. 
 
-###IContext
+### IContext
 
 The IContext object extends the Map interface and provides a set of objects that can be used by your custom authorization function. At present the following keys can be used:
 
