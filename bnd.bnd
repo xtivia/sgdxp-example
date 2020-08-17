@@ -9,18 +9,11 @@ Import-Package: \
 Bundle-ClassPath:\
 	.,\
 	lib/jackson-jaxrs-json-provider.jar,\
-	lib/jackson-annotations.jar,\
-	lib/jackson-core.jar,\
-	lib/jackson-databind.jar,\
 	lib/jackson-jaxrs-base.jar,\
 	lib/jackson-module-jaxb-annotations.jar,\
 	lib/javax.activation-api.jar
 -includeresource:\
 	lib/jackson-jaxrs-json-provider.jar=jackson-jaxrs-json-provider-*.jar,\
-	lib/jackson-annotations.jar=jackson-annotations-*.jar,\
-	lib/jackson-core.jar=jackson-jaxrs-json-provider-*.jar,\
-	lib/jackson-databind.jar=jackson-databind-*.jar,\
 	lib/jackson-jaxrs-base.jar=jackson-jaxrs-base-*.jar,\
 	lib/jackson-module-jaxb-annotations.jar=jackson-module-jaxb-annotations-*.jar,\
 	lib/javax.activation-api.jar=javax.activation-api-*.jar
-	
