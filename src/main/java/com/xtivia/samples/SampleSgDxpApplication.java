@@ -15,22 +15,7 @@
  */
 package com.xtivia.samples;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
-
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
-
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Modified;
-
-import com.xtivia.sgdxp.core.IAuthorizer;
-import com.xtivia.sgdxp.core.IContext;
-import com.xtivia.sgdxp.core.SgDxpApplication;
 import com.xtivia.samples.resources.AllAuthenticatedResource;
 import com.xtivia.samples.resources.AuthorizedResource;
 import com.xtivia.samples.resources.MethodAuthenticatedResource;
@@ -38,14 +23,41 @@ import com.xtivia.samples.resources.OmniadminResource;
 import com.xtivia.samples.resources.OrgMemberResource;
 import com.xtivia.samples.resources.OrgRoleResource;
 import com.xtivia.samples.resources.RegularRoleResource;
+import com.xtivia.sgdxp.core.IAuthorizer;
+import com.xtivia.sgdxp.core.IContext;
+import com.xtivia.sgdxp.core.SgDxpApplication;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Map;
+import java.util.Set;
+
+import javax.ws.rs.core.Application;
+
+//import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.jaxrs.whiteboard.JaxrsWhiteboardConstants;
 
 /*
  * A sample application to demonstrate the use of Service Guard for DXP
  */
 
-@Component(immediate=true, service=Application.class, property={"jaxrs.application=true"})
 
-@ApplicationPath("/sgdxp_samples")
+@Component(
+		property = {
+			JaxrsWhiteboardConstants.JAX_RS_APPLICATION_BASE + "=/sgdxp_samples",
+			JaxrsWhiteboardConstants.JAX_RS_NAME + "=Xtivia.SgDxp.Sample",
+			"auth.verifier.guest.allowed=true",
+			"oauth2.scopechecker.type=none",
+			"liferay.access.control.disable=true",
+			"auth.verifier.auth.verifier.PortalSessionAuthVerifier.check.csrf.token=false"
+		},
+		service = Application.class)
+
+//@Component(immediate=true, service=Application.class, property={"jaxrs.application=true"})
+//@ApplicationPath("/sgdxp_samples")
 public class SampleSgDxpApplication extends SgDxpApplication implements IAuthorizer {
 	
 	/*
@@ -61,7 +73,7 @@ public class SampleSgDxpApplication extends SgDxpApplication implements IAuthori
 
 		//add the automated Jackson marshaller for JSON
 		singletons.add(new JacksonJsonProvider());
-		
+
 		// add our sample protected REST endpoints (resources)
 		singletons.add(new AllAuthenticatedResource());
 		singletons.add(new MethodAuthenticatedResource());
